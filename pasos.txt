@@ -10,3 +10,10 @@
 8. nodemon index.js
 9. publicPath.... y carpeta "public" con html
 10. nodemon index.js
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+11. npm i dotenv  ==> para producción, Variables de entorno del puerto del dominio
+12. Archivo .env
+13. process.env.PORT en index.js
+14. En package.json comandos start y start:dev 
+        npm start ==> lanzar la app en producción
+        npm run start:dev  ==> lanzar la app en desarrollo

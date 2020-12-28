@@ -1,22 +1,20 @@
-// Esto es como una importación el flutter
 const express = require('express');
 const path = require('path');
 
-// Me creo una aplicación y ya esoy listo para comenzar a escuchar peticiones
+// para el paquete dotenv que he descargado (npm i dotenv)
+// Cuando esté en producción tendré que escuchar el puerto que haya en el dominio
+// Leerá el archivo .env y establecerá las variables de entorno
+require('dotenv').config();
+
 const app = express();
 
-// Path pública o carpeta pública
-// Apunta a donde sea que esté mi servidor, y de allí a mi carpeta public
 const publicPath = path.resolve( __dirname, 'public' )
 
-// Le digo a mi app de express que tiene ese path y que lo muestre cuando se haga una petición
 app.use( express.static( publicPath ) );
 
-
-// Me pongo a escuchar en el puerto 3000 y llamo un callback
-// El callback me devuelve  un error si sucediese
-app.listen(3000, (err) => {
+// Y así puedo leer el puerto desde la variable de entorno
+app.listen(process.env.PORT, (err) => {
     if ( err ) throw new Error(err);
-
-    console.log(`Servidor corriendo en el puerto ${3000}`);
+    // para que me saque el puerto en el que está corriendo
+    console.log(`Servidor corriendo en el puerto ${process.env.PORT}`);
 });
