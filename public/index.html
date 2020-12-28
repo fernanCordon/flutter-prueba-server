@@ -7,12 +7,9 @@
 </head>
 <body>
     <h1>Acceso denegado</h1>
-    <!-- ponemos esta url en la etiqueta script del html -->
     <script src="socket.io/socket.io.js"></script>
 
     <script>
-        // Aquí va a hacer la conexión a nuestro Socket server
-        // io() se escuentra dentro de la librería: socket.io/socket.io.js
         let socket = io()
 
         socket.on('connect', function() {
@@ -22,6 +19,17 @@
         socket.on('disconnect', function() {
             console.log('Perdimos comunicación con el servidor');
         });
+
+        // Emitiré un evento. socket es quie tiene la comunicación, ahí está todo
+        // 1º argumento el mensaje, 2º el objeto a enviar
+        // Cuando recargue el navegador es cuando lo emitimos
+        socket.emit('mensaje', { nombre: 'Fernando' });
+
+        // Voy a escuchar el mensaje y hacer algo
+        socket.on('mensaje', function(payload)  {
+            console.log('Escuchando:', payload);
+        });
+
 
     </script>
 </body>
