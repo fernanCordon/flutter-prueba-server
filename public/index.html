@@ -20,16 +20,11 @@
             console.log('Perdimos comunicación con el servidor');
         });
 
-        // Emitiré un evento. socket es quie tiene la comunicación, ahí está todo
-        // 1º argumento el mensaje, 2º el objeto a enviar
-        // Cuando recargue el navegador es cuando lo emitimos
         socket.emit('mensaje', { nombre: 'Fernando' });
 
-        // Voy a escuchar el mensaje y hacer algo
         socket.on('mensaje', function(payload)  {
             console.log('Escuchando:', payload);
         });
-
 
     </script>
 </body>
