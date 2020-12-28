@@ -1,0 +1,12 @@
+1. Creo carpeta band_names_server
+2. npm init -y  ==> package.json
+3. npm init express  ==> crea la carpeta node_modules
+4. Creo index.js
+5. creo el listen con el console
+6. node index.js
+7. Instalo nodemon: MAC sudo npm i -g nodemon   
+                    WIN correr cmd como administrador (run as administrator) 
+                    npm i -g nodemon 
+8. nodemon index.js
+9. publicPath.... y carpeta "public" con html
+10. nodemon index.js
