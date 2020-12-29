@@ -18,6 +18,7 @@
         npm start ==> lanzar la app en producción
         npm run start:dev  ==> lanzar la app en desarrollo
 - - - - - - - - - - - - - - - - - - - - - - - - - 
-15. npm i socket.io
+15. npm i socket.io@2.3.0
 16. Cambios en index.js
 17. Cambios en index.html
+- - - - - - - - - - - - - - - - - - - - - - - - - 
