@@ -31,6 +31,16 @@
             console.log('Escuchando:', payload);
         });
 
+        // Escucho active-bands y lo imprimo en consola
+        // Voy al navegador web, recargo y ya las tengo. Solo las recibe el cliente conectado
+        socket.on('active-bands', function( bands )  {
+            // Para limpiar la consola cada vez que se emita uno
+            console.clear();
+            // El console.table lo pone más bonito y me servirá cuando haga la votación
+            // para ver como cambia en tiempo real
+            console.table( bands );
+        });
+
     </script>
 </body>
 </html>
