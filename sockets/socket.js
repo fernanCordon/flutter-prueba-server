@@ -3,24 +3,17 @@ const { io } = require('../index');
 const Band = require('../models/band');
 const Bands = require('../models/bands');
 
-
-// Creo una instancia de Bands y veo que se importa arriba automáticamente
 const bands = new Bands();
 
-bands.addBand( new Band( 'Queen' ));
+// Si cambio un dato aquí se resetea todo
+bands.addBand( new Band( 'Breaking Benjamin' ));
 bands.addBand( new Band( 'Bon Jovi' ));
 bands.addBand( new Band( 'Héroes del Silencio' ));
 bands.addBand( new Band( 'Metallica' ));
 
-// console.log(bands);
-
-
 io.on('connection', client => {
     console.log('Cliente conectado');
 
-    // cuando un cliente se conecta, que es aquí, puedo enviarle todas las bandas que haya.
-    // Solo se lo emitiré al cliente que se conecte.
-    // Para verlo voy al Html
     client.emit('active-bands', bands.getBands());
 
     client.on('disconnect', () => {
@@ -32,8 +25,23 @@ io.on('connection', client => {
         io.emit('mensaje', { admin: 'Nuevo mensaje'});
     });
 
-    client.on('emitir-mensaje', ( payload ) => {
-        client.broadcast.emit('nuevo-mensaje', payload);
+    // Aquí escucho cuando el cliente emita en 'vote-band'
+    // Y luego tendré que llamar a ese vote-band desde el cliente Flutter
+    client.on('vote-band', ( payload ) => {
+
+        // Por ahora solo lo imprimiré en consola
+        // console.log(payload);
+
+        // El identificador que necesito para este método viene en el payload.id 
+        bands.voteBand( payload.id );
+
+        // Comunico a todos los que estén escuchando que ha habido un cambio, también a quien lo ha emitido
+        // Lo hago mediante el 'active-bands'
+        io.emit('active-bands', bands.getBands());
     });
+
+    // client.on('emitir-mensaje', ( payload ) => {
+    //     client.broadcast.emit('nuevo-mensaje', payload);
+    // });
 
 });

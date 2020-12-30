@@ -20,12 +20,14 @@ class Bands {
     }
 
     voteBand( id = '' ) {
-        this.bands = bands.map( band => {
+        
+        // No me funcionaba porque no había puesto el this
+        this.bands = this.bands.map( band => {
             if ( band.id === id ) {
                 band.votes++;
                 return band;
             } else {
-                return band
+                return band;
             }
         });
 
