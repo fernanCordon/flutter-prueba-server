@@ -5,7 +5,6 @@ const Bands = require('../models/bands');
 
 const bands = new Bands();
 
-// Si cambio un dato aquí se resetea todo
 bands.addBand( new Band( 'Breaking Benjamin' ));
 bands.addBand( new Band( 'Bon Jovi' ));
 bands.addBand( new Band( 'Héroes del Silencio' ));
@@ -25,23 +24,21 @@ io.on('connection', client => {
         io.emit('mensaje', { admin: 'Nuevo mensaje'});
     });
 
-    // Aquí escucho cuando el cliente emita en 'vote-band'
-    // Y luego tendré que llamar a ese vote-band desde el cliente Flutter
     client.on('vote-band', ( payload ) => {
-
-        // Por ahora solo lo imprimiré en consola
-        // console.log(payload);
-
-        // El identificador que necesito para este método viene en el payload.id 
         bands.voteBand( payload.id );
-
-        // Comunico a todos los que estén escuchando que ha habido un cambio, también a quien lo ha emitido
-        // Lo hago mediante el 'active-bands'
         io.emit('active-bands', bands.getBands());
     });
 
-    // client.on('emitir-mensaje', ( payload ) => {
-    //     client.broadcast.emit('nuevo-mensaje', payload);
-    // });
+    // Escuchar el evento add-band
+    client.on('add-band', ( payload ) => {
+
+        // Creo una banda con el name
+        const newBand = new Band( payload.name );
+        // Añado una banda
+        bands.addBand( newBand );
+        // Emito este mensaje para que todos los clientes sean notificados de que hay una nueva banda
+        // Y ahora voy al dispositivo y añado a Queen, y a ABC
+        io.emit('active-bands', bands.getBands());
+    });
 
 });
