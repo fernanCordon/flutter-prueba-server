@@ -29,15 +29,15 @@ io.on('connection', client => {
         io.emit('active-bands', bands.getBands());
     });
 
-    // Escuchar el evento add-band
     client.on('add-band', ( payload ) => {
-
-        // Creo una banda con el name
         const newBand = new Band( payload.name );
-        // Añado una banda
         bands.addBand( newBand );
-        // Emito este mensaje para que todos los clientes sean notificados de que hay una nueva banda
-        // Y ahora voy al dispositivo y añado a Queen, y a ABC
+        io.emit('active-bands', bands.getBands());
+    });
+
+    // Crear la acción de borrar la banda cuando el cliente emita elevento delete-band
+    client.on('delete-band', ( payload ) => {
+        bands.deleteBand( payload.id );
         io.emit('active-bands', bands.getBands());
     });
 
