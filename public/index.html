@@ -27,10 +27,6 @@
             console.log('Escuchando:', payload);
         });
 
-        // Para recoger desde el cliente navegador 'nuevo-mensaje' que me viene del server
-        // Hay que recargar el navegador para que recoja los cambios que hemos hecho
-        // Y puedo abrir más ventanas del navegador para que haya más clientes y veré que
-        // a todos llega el mensaje.
         socket.on('nuevo-mensaje', function(payload)  {
             console.log('Escuchando:', payload);
         });
