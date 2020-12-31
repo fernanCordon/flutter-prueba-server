@@ -24,7 +24,7 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - 
 GITHUB
 A) Crear cuenta en github
-B) Nuevo repo: "flutter-socket.io-server"index.js
+B) Nuevo repo: "flutter-socket.io-server" 
 C)  Copiar y pegar en D: git remote add origin https://github.com/....
     Utilizaré este en D: git push -u origin master
 A) Creo .gitignore y escribo ==> node_modules/ 
