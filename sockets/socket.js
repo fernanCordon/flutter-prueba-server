@@ -35,7 +35,6 @@ io.on('connection', client => {
         io.emit('active-bands', bands.getBands());
     });
 
-    // Crear la acción de borrar la banda cuando el cliente emita elevento delete-band
     client.on('delete-band', ( payload ) => {
         bands.deleteBand( payload.id );
         io.emit('active-bands', bands.getBands());

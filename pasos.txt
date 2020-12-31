@@ -22,3 +22,41 @@
 16. Cambios en index.js
 17. Cambios en index.html
 - - - - - - - - - - - - - - - - - - - - - - - - - 
+GITHUB
+A) Crear cuenta en github
+B) Nuevo repo: "flutter-socket.io-server"index.js
+C)  Copiar y pegar en D: git remote add origin https://github.com/....
+    Utilizaré este en D: git push -u origin master
+A) Creo .gitignore y escribo ==> node_modules/ 
+B) Hago último commit:  git add .
+                        git commit -m "App terminada"
+D) Comandos:    git remote add origin https://github.com/....
+                git push -u origin master
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+HEROKU
+A) https://www.heroku.com/ (5 apps gratuitas, alos 30 min duermen)
+B) Singn up - Registrarse
+C) new - create new app  "flutter-socket-server"
+D) Instalar Heroku CLI
+    En Mac mediante brew: copiar y pegar el comando
+        Si no tienes Homebrew: https://brew.sh/index_es
+    En Windows: Instalador next, next, next
+E) Utilizar comandos de Heroku CLI:  
+    1. heroku --version   Si no aparece reiniciar el equipo
+    2. heroku login en la terminal de VSCode con el proyecto abierto
+        Se abre el navegador y hacemos login y cerramos el navegador
+    3. comando que me den: heroku git:remote -a flutter-socket-server
+    4. git push heroku master (despliega mi repositorio a heroku)
+    5. Cuando se despliega me da mi url: La copio
+    6. En el navegador crhome ya se ve mi app server
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+CORRER LA APP EN ANDROID E IOS 
+A) Abro mi aplicación de flutter en VSCode, y abro el archivo socket_service
+B) Cambio el url: 'https://.....' por la dirección que me dio heroku
+D) Abro el simulador y el emulador
+C) flutter run -d all   (r, R)
+D) Funciona todo bien y puedo conectar el dispositivo físico
+
+
+
+
